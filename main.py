@@ -36,9 +36,14 @@ if weekday < 5:
         connection.starttls()
         # Obscure username and password from GitHub public repo
         # Retrieve .env variables
-        outgoing_email = os.getenv("SMTP_USER_OUTGOING_EMAIL")
-        outgoing_email_password = os.getenv("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
-        receiving_email = os.getenv("SMTP_USER_RECEIVING_EMAIL")
+        # -----------------------Local Setup------------------------
+        # outgoing_email = os.getenv("SMTP_USER_OUTGOING_EMAIL")
+        # outgoing_email_password = os.getenv("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
+        # receiving_email = os.getenv("SMTP_USER_RECEIVING_EMAIL")
+        # -----------------------GitHub Actions Setup------------------------
+        outgoing_email = os.environ.get("SMTP_USER_OUTGOING_EMAIL")
+        outgoing_email_password = os.environ.get("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
+        receiving_email = os.environ.get("SMTP_USER_RECEIVING_EMAIL")
         connection.login(user=outgoing_email, password=outgoing_email_password)
         # Send the message with MIMEText
         connection.send_message(from_addr=outgoing_email, to_addrs=receiving_email, msg=message)
