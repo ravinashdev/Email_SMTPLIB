@@ -40,10 +40,13 @@ if weekday < 5:
         # outgoing_email = os.getenv("SMTP_USER_OUTGOING_EMAIL")
         # outgoing_email_password = os.getenv("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
         # receiving_email = os.getenv("SMTP_USER_RECEIVING_EMAIL")
+        # connection.login(user=outgoing_email, password=outgoing_email_password)
+        # # Send the message with MIMEText
+        # connection.send_message(from_addr=outgoing_email, to_addrs=receiving_email, msg=message)
         # -----------------------GitHub Actions Setup------------------------
-        outgoing_email = os.environ.get("SMTP_USER_OUTGOING_EMAIL")
-        outgoing_email_password = os.environ.get("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
-        receiving_email = os.environ.get("SMTP_USER_RECEIVING_EMAIL")
-        connection.login(user=outgoing_email, password=outgoing_email_password)
+        SMTP_USER_OUTGOING_EMAIL = os.environ.get("SMTP_USER_OUTGOING_EMAIL")
+        SMTP_USER_OUTGOING_EMAIL_APP_PASS = os.environ.get("SMTP_USER_OUTGOING_EMAIL_APP_PASS")
+        SMTP_USER_RECEIVING_EMAIL = os.environ.get("SMTP_USER_RECEIVING_EMAIL")
+        connection.login(user=SMTP_USER_OUTGOING_EMAIL, password=SMTP_USER_OUTGOING_EMAIL_APP_PASS)
         # Send the message with MIMEText
-        connection.send_message(from_addr=outgoing_email, to_addrs=receiving_email, msg=message)
+        connection.send_message(from_addr=SMTP_USER_OUTGOING_EMAIL, to_addrs=SMTP_USER_RECEIVING_EMAIL, msg=message)
