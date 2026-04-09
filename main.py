@@ -18,7 +18,7 @@ random_quote = random.choice(motivational_quotes_dictionary)
 # ---------------------------- CONSTANTS ------------------------------- #
 load_dotenv()
 # ---------------------------- GLOBAL VARIABLES ------------------------------- #
-# To schedule a chron job on a server I'll use pythonanywhere.com'
+# To schedule a chron job on a server I'll use GitHub actions since it's free'
 # ---------------------------- FUNCTIONS ------------------------------- #
 
 # ---------------------------- UI SETUP ------------------------------- #
